@@ -182,7 +182,7 @@ const FormStepComponents = {
 } as Record<1 | 2, (props: StepProps) => JSX.Element>;
 
 const DonationForm: DonationFormComponent = (props) => {
-	const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+	const [currentStep, setCurrentStep] = useState<1 | 2>(2);
 
 	const form = useForm<DonationSchema>({
 		resolver: zodResolver(donationSchema),
@@ -256,6 +256,8 @@ const DonationForm: DonationFormComponent = (props) => {
 					</Button>
 				</form>
 			</Form>
+
+			{currentStep === 2 && <p className="px-2 text-center text-wrap text-[18px] pt-4 text-stone-500">We&apos;ll never share your information with anyone.</p>}
 		</div>
 	);
 };
