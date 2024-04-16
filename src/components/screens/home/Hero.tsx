@@ -25,14 +25,14 @@ const Hero = () => {
 						<Button
 							size={"lg"}
 							className="text-[18px] py-7"
-							variant={"outline"}
+							variant={"default"}
 						>
 							Boycott Israeli Products
 						</Button>
 						<Button
 							size={"lg"}
 							className="text-[18px] py-7"
-							variant={"default"}
+							variant={"outline"}
 						>
 							Take Quiz
 						</Button>
