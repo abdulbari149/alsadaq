@@ -29,7 +29,7 @@ const navLinks = [
 const Navbar = () => {
 	return (
 		<header className="flex flex-row w-100 py-5 px-[8%] items-center justify-between bg-[#F2F5F6] shadow-md">
-			<h2 className="text-lg text-black">Logo</h2>
+			<h2 className="text-[24px] font-[600] text-[#333839]">Al-Sadaq</h2>
 
 			<nav className="flex flex-row gap-8 items-center">
 				{navLinks.map((nav) => (
