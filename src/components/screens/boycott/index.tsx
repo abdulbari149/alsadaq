@@ -1,7 +1,8 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import assets from "@/assets";
-import Image from "next/image";
+import Banner from "@/components/shared/Banner";
+import BoycottProducts from "@/components/shared/BoycottProducts";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const tabs = [
 	{
@@ -320,68 +321,123 @@ const tabs = [
 					image: assets.images.kfcImage,
 				},
 			},
+			{
+				id: 10,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
+			{
+				id: 11,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
+			{
+				id: 12,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
+			{
+				id: 13,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
+			{
+				id: 14,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
+			{
+				id: 15,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
+			{
+				id: 16,
+				boycott: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+				alternate: {
+					name: "KFC",
+					image: assets.images.kfcImage,
+				},
+			},
 		],
 	},
 ];
 
-const BoycottProducts = () => {
+const BoycottPage = () => {
 	return (
-		<div className="flex flex-col items-center px-[8%] mt-[18vh]">
-			<h1 className="text-4xl w-[60%] font-semibold leading-[4rem] text-center text-[#333839] text-[48px] text-wrap py-3">
-				Boycott Israeli products and use these alternatives
-			</h1>
-
-			<Tabs defaultValue={tabs[0].value} className="w-full mb-8">
-				<TabsList className="flex items-center my-5 justify-center px-2 mx-auto w-fit">
-					{tabs.map((tab) => (
-						<TabsTrigger key={tab.id} value={tab.value}>
-							{tab.title}
-						</TabsTrigger>
-					))}
-				</TabsList>
-				{tabs.map((tab) => (
-					<TabsContent value={tab.value} key={tab.id} className="mt-10">
-						<div className="w-100 flex flex-col gap-8">
-							<div className="grid grid-cols-4 gap-4 grid-flow-row">
-								{tab.products.map((p) => {
-									const { id, ...data } = p;
-									return (
-										<div
-											key={`${tab.id}-${p.id}`}
-											className="w-100 h-[160px] rounded-md bg-[#F2F5F6] flex flex-row px-3 py-3 gap-3"
-										>
-											{Object.keys(data).map((key) => {
-												const type = key === "boycott" ? "right" : "wrong";
-												const item = data[key as keyof typeof data];
-												return (
-													<div
-														key={`${tab.id}-${p.id}-${key}`}
-														className="flex-1 relative bg-white rounded-md flex flex-col items-center justify-center gap-3"
-													>
-														<div className="absolute top-1 right-1">
-															<Image
-																src={assets.icons[type]}
-																alt={`${type} icon`}
-															/>
-														</div>
-														<Image src={item.image} alt={item.name} />
-														<p className="text-[14px] font-semibold">
-															{item.name}
-														</p>
-													</div>
-												);
-											})}
-										</div>
-									);
-								})}
-							</div>
-							<Button variant={"outline-secondary"} size={'lg'} className="self-center px-8 py-6">View All</Button>
-						</div>
-					</TabsContent>
-				))}
-			</Tabs>
-		</div>
+		<>
+			<Banner
+				title={"Boycott Israeli Products\nand use alternatives."}
+				variant="secondary"
+			>
+				<div className="absolute right-0 bottom-0">
+					<Image src={assets.images.banImage} alt="ban image" />
+				</div>
+			</Banner>
+			<BoycottProducts tabs={tabs} />
+			<Banner
+				title={"Donate to Palestine\nthrough Alkhidmat\nfoundation"}
+				variant="primary"
+				renderCta={() => {
+					return (
+						<Button
+							size={"lg"}
+							className="text-[18px] w-[180px] py-6"
+							variant={"outline"}
+						>
+							Donate Now
+						</Button>
+					);
+				}}
+			>
+				<div className="absolute right-0 bottom-0">
+					<Image
+						src={assets.images.donationImage}
+						alt="donation image"
+						height={500}
+					/>
+				</div>
+			</Banner>
+		</>
 	);
 };
-
-export default BoycottProducts;
+export default BoycottPage;
