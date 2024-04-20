@@ -25,27 +25,7 @@ export default function RootLayout({
 				<main className="w-100 flex flex-col overflow-x-hidden max-w-[100vw]">
 					<Navbar />
 					{children}
-					<Banner
-						title={"Test your Palestine\nKnowledge with our Quiz"}
-						variant="white"
-						renderCta={() => (
-							<Button
-								variant="secondary"
-								size="lg"
-								className="py-6 px-10 w-[140px]"
-							>
-								Start Quiz
-							</Button>
-						)}
-					>
-						<div className="absolute right-0 bottom-0 object-cover">
-							<Image
-								src={assets.images.quizBannerImage}
-								className="object-cover"
-								alt="bg hero flag"
-							/>
-						</div>
-					</Banner>
+					
 					<footer className="py-6 flex items-center justify-center bg-[#F2F5F6]">
 						<p className="text-[16px] text-[#51595A] font-light">
 							Copyright © 2023 – 2024 Al-Sadaq. All Rights Reserved.

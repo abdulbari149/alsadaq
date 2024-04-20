@@ -2,7 +2,7 @@ import HomePage from "@/components/screens/home";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Al Sadaq | Home'
+  title: 'Home | Al Sadaq'
 }
 
 const page = () => <HomePage />
