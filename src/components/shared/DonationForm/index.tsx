@@ -204,7 +204,7 @@ const DonationForm: DonationFormComponent = (props) => {
 				<div className="flex flex-col gap-2 mb-5">
 					<div className="space-x-2 flex flex-row items-center">
 						{currentStep === 2 ? (
-							<ArrowLeft className="text-stone-500" onClick={() => setCurrentStep(1)} />
+							<ArrowLeft className="text-stone-500 cursor-pointer" onClick={() => setCurrentStep(1)} />
 						) : null}
 						<h2 className="text-2xl font-semibold">{content.header.title}</h2>
 					</div>

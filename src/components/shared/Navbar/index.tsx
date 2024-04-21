@@ -28,7 +28,7 @@ const navLinks = [
 
 const Navbar = () => {
 	return (
-		<header className="flex flex-row w-100 py-5 px-[8%] items-center justify-between bg-[#F2F5F6] shadow-md">
+		<header className="flex flex-row w-100 py-5 px-[8%] items-center justify-between bg-white border-b-[1px] border-solid border-[#E9EDEE]">
 			<h2 className="text-[24px] font-[600] text-[#333839]">Al-Sadaq</h2>
 
 			<nav className="flex flex-row gap-8 items-center">
