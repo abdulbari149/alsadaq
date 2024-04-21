@@ -182,7 +182,7 @@ const FormStepComponents = {
 } as Record<1 | 2, (props: StepProps) => JSX.Element>;
 
 const DonationForm: DonationFormComponent = (props) => {
-	const [currentStep, setCurrentStep] = useState<1 | 2>(2);
+	const [currentStep, setCurrentStep] = useState<1 | 2>(1);
 
 	const form = useForm<DonationSchema>({
 		resolver: zodResolver(donationSchema),
@@ -204,7 +204,7 @@ const DonationForm: DonationFormComponent = (props) => {
 				<div className="flex flex-col gap-2 mb-5">
 					<div className="space-x-2 flex flex-row items-center">
 						{currentStep === 2 ? (
-							<ArrowLeft className="text-stone-500" />
+							<ArrowLeft className="text-stone-500" onClick={() => setCurrentStep(1)} />
 						) : null}
 						<h2 className="text-2xl font-semibold">{content.header.title}</h2>
 					</div>
