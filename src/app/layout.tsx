@@ -1,10 +1,11 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
-export default function RootLayout({
+export default function PublicLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
@@ -12,10 +13,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={font.className}>
-				<main className="w-100 flex flex-col overflow-x-hidden max-w-[100vw]">
-					<Navbar />
-					{children}
-				</main>
+				{children}
+				<ToastContainer />
 			</body>
 		</html>
 	);

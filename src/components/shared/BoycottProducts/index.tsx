@@ -1,21 +1,11 @@
+'use client'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import assets from "@/assets";
 import Image, { ImageProps } from "next/image";
 import { Button } from "@/components/ui/button";
+import { TabItem } from "@/types/utils.type";
+import { useState } from "react";
 
-type TabItem = {
-	id: number;
-	value: string;
-	title: string;
-	products: Array<
-		{
-			id: number;
-		} & Record<
-			"boycott" | "alternate",
-			{ name: string; image: ImageProps["src"] }
-		>
-	>;
-};
 
 type BoycottProductsProps = {
 	viewAll?: boolean;
@@ -23,7 +13,13 @@ type BoycottProductsProps = {
 };
 
 const BoycottProducts = (props: BoycottProductsProps) => {
-	const { tabs } = props;
+	let { tabs } = props;
+	const [viewAll, setViewAll] = useState(false);
+
+	if (props.viewAll && !viewAll) {
+		tabs = tabs.slice(0, 12)
+	}
+
 	return (
 		<div className="flex flex-col items-center px-[8%] my-12">
 			<h1 className="text-4xl w-[60%] font-semibold leading-[4rem] text-center text-[#333839] text-[48px] text-wrap py-3">
@@ -63,7 +59,7 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 																alt={`${type} icon`}
 															/>
 														</div>
-														<Image src={item.image} alt={item.name} />
+														<Image src={item.image} alt={item.name} width={100} height={1000} />
 														<p className="text-[14px] font-semibold">
 															{item.name}
 														</p>
@@ -79,6 +75,9 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 									variant={"outline-secondary"}
 									size={"lg"}
 									className="self-center px-8 py-6"
+									onClick={() => {
+										setViewAll(true)
+									}}
 								>
 									View All
 								</Button>

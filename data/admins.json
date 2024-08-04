@@ -1,0 +1,17 @@
+[
+  {
+    "email": "admin@alsadaq.com",
+    "username": "alsadaq-admin",
+    "password": "abcd1234@"
+  },
+  {
+    "email": "abdulbari@alsadaq.com",
+    "username": "alsadaq-abdulbari",
+    "password": "abcd1234@"
+  },
+  {
+    "email": "harsh@alsadaq.com",
+    "username": "alsadaq-harsh",
+    "password": "abcd1234@"
+  }
+]
