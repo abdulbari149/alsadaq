@@ -1,4 +1,4 @@
-import env from '@/config/env.config'
+import env from '@/config/env.config.mjs'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import convertTime from './convert-time'
 
@@ -13,10 +13,10 @@ const accessToken = {
   verify<T extends object>(token: string) {
     try {
       const payload = jwt.verify(token, env.JWT_ACCESS_TOKEN_SECRET)
-      if (typeof payload !== 'object' || !('data'in payload)) {
+      if (typeof payload !== 'object' || !('data' in payload)) {
         throw new Error('invalid payload');
       }
-      return payload.data as T 
+      return payload.data as T
     } catch (error) {
       throw error;
     }

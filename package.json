@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prod": "npm run prisma:generate && npm run prisma:deploy && npm run build",
     "prisma:generate": "prisma generate",
     "prisma:pull": "prisma db pull",
     "prisma:push": "prisma db push",
     "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
     "prisma:seed": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register --transpile-only prisma/seed.ts"
   },
   "dependencies": {

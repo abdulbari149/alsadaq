@@ -1,4 +1,3 @@
-import DonationForm from "@/components/shared/DonationForm";
 import BoycottProducts from "@/components/shared/BoycottProducts";
 import Banner from "@/components/shared/Banner";
 import { Button } from "@/components/ui/button";

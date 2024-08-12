@@ -4,8 +4,7 @@ import dynamic from "next/dynamic";
 import { currentUser } from "@/functions/user";
 import NextTopLoader from "nextjs-toploader";
 import Colors from "@/styles/colors";
-
-const Sidebar = dynamic(() => import("@/components/shared/Sidebar"), { ssr: false });
+import Sidebar from '@/components/shared/Sidebar';
 
 const ProtectedLayout = async ({ children }: { children: React.ReactNode }) => {
 	const { user } = await currentUser();

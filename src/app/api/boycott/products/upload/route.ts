@@ -3,7 +3,7 @@ import fs from 'fs'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
 import { extname } from 'path'
-import env from '@/config/env.config'
+import env from '@/config/env.config.mjs'
 import handleError from '@/utils/handle-error'
 const pump = promisify(pipeline)
 const mkdir = promisify(fs.mkdir)
