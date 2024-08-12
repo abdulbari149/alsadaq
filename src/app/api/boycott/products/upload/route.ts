@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
-import { extname } from 'path'
+import path, { extname } from 'path'
 import env from '@/config/env.config.mjs'
 import handleError from '@/utils/handle-error'
 const pump = promisify(pipeline)
@@ -12,10 +12,13 @@ const access = promisify(fs.access)
 export async function POST(req: NextRequest) {
   try {
     const dir = 'products'
+    const publicDir = path.resolve('../../../../../../public');
     try {
-      await access(`public/${dir}`, fs.constants.R_OK | fs.constants.W_OK)
+      await access(`${publicDir}/${dir}`, fs.constants.R_OK | fs.constants.W_OK)
     } catch (error) {
-      await mkdir(`public/${dir}`, { recursive: true })
+      try {
+        await mkdir(`${publicDir}/${dir}`, { recursive: true })
+      } catch (error) { }
     }
 
     const formData = await req.formData()
