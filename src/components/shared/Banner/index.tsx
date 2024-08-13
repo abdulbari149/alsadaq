@@ -5,13 +5,13 @@ import { CircleAlertIcon } from "lucide-react";
 import Image from "next/image";
 
 type BannerProps = {
-	title: string;
+	title: string | JSX.Element;
 	renderCta?: () => React.JSX.Element;
 	variant: "primary" | "secondary" | "white" | "background";
 	children?: React.ReactNode;
 	bgImage?: { src: string; alt: string; className?: string };
 	className?: string;
-	description?: string;
+	description?: string | JSX.Element;
 	note?: string;
 };
 

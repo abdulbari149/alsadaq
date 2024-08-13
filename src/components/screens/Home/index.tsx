@@ -50,34 +50,11 @@ const HomePage = async () => {
 				</section>
 			)}
 
-			<section className="w-[100%] bg-[#E9EDEE] py-[5rem] px-[8%]">
-				<div className="flex flex-row items-center justify-between w-[100%]">
-					<div className="w-[50%] flex flex-col gap-3">
-						<h3 className="text-[48px] text-black text-wrap whitespace-pre-wrap font-semibold">
-							About
-						</h3>
-						<p className="text-[24px] leading-10">
-							Alsadaq is a dedicated platform created with the mission of{" "}
-							<strong>supporting humanitarian efforts</strong> in Palestine and
-							create an awareness campaigns for{" "}
-							<strong>boycotting israeli products</strong>. Our goal is to
-							provide a secure and efficient way for individuals around the
-							world to contribute to the well-being of the Palestinian people.{" "}
-						</p>
-					</div>
-					<div className="">
-						<Image
-							src={"/alsadaq-urdu.svg"}
-							alt="al sadaq"
-							width={300}
-							height={120}
-						/>
-					</div>
-				</div>
-			</section>
 			<Banner
 				title={"Support Palestine, Make an Impact"}
-				description={"Your generosity can provide crucial aid to those in need. Every donation helps to bring relief,\n hope, and a brighter future for the Palestinian people. Together, we can make a difference."}
+				description={
+					"Your generosity can provide crucial aid to those in need. Every donation helps to bring relief,\n hope, and a brighter future for the Palestinian people. Together, we can make a difference."
+				}
 				variant="background"
 				note={`This setup emphasizes the importance of the donation, the impact it will have, and encourages immediate action, while clearly\ndirecting users to the "One Ummah" platform for making their contribution.`}
 				className="h-[42rem]"
@@ -91,12 +68,11 @@ const HomePage = async () => {
 					</Button>
 				)}
 				bgImage={{
-					src: '/images/home/bg-2.png',
-					alt: 'Palestine lives matter',
-					className: 'translate-y-[-4%]'
+					src: "/images/home/bg-2.png",
+					alt: "Palestine lives matter",
+					className: "translate-y-[-4%]",
 				}}
 			/>
-
 		</>
 	);
 };
