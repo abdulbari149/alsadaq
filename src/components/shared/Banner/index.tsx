@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import assets from "@/assets";
 import { cn } from "@/lib/utils";
+import { CircleAlertIcon } from "lucide-react";
 import Image from "next/image";
 
 type BannerProps = {
@@ -8,8 +9,10 @@ type BannerProps = {
 	renderCta?: () => React.JSX.Element;
 	variant: "primary" | "secondary" | "white" | "background";
 	children?: React.ReactNode;
-	bgImage?: {  src: string; alt: string; className?: string; };
+	bgImage?: { src: string; alt: string; className?: string };
 	className?: string;
+	description?: string;
+	note?: string;
 };
 
 const Banner = (props: BannerProps) => {
@@ -32,7 +35,10 @@ const Banner = (props: BannerProps) => {
 					<div className="absolute top-0 left-0 w-[100%] z-[-2]">
 						<img
 							src={props.bgImage.src}
-							className={cn("object-contain w-[100%] translate-y-[-30%]", props.bgImage.className)}
+							className={cn(
+								"object-contain w-[100%] translate-y-[-30%]",
+								props.bgImage.className
+							)}
 							alt={props.bgImage.alt}
 						/>
 					</div>
@@ -59,7 +65,31 @@ const Banner = (props: BannerProps) => {
 					>
 						{props.title}
 					</h1>
+					{props.description && (
+						<p
+							className={cn(
+								"text-[28px] text-white text-wrap whitespace-pre-wrap font-normal",
+								{ "text-black": props.variant === "white" }
+							)}
+						>
+							{props.description}
+						</p>
+					)}
 					{props.renderCta?.()}
+
+					{props.note && (
+						<div className="flex flex-row items-start gap-1 my-3">
+							<CircleAlertIcon color="#ffffff" size={25} className="mt-1" />
+							<p
+								className={cn(
+									"text-[18px] text-white text-wrap whitespace-pre-wrap font-normal",
+									{ "text-black": props.variant === "white" }
+								)}
+							>
+								{props.note}
+							</p>
+						</div>
+					)}
 				</div>
 			</div>
 

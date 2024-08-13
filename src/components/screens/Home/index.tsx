@@ -10,13 +10,16 @@ const HomePage = async () => {
 	return (
 		<>
 			<Banner
-				title={"Donate to Palestine\nthrough Alkhidmat\nfoundation"}
+				title={"Your Choice Can Create Change"}
 				variant="background"
+				description={
+					"Boycott the list of Israeli products that support oppression. Support Palestine by \ncontributing to a cause that matters. Your support is a step towards freedom."
+				}
 				// bgImage={"/images/home/bg.jpeg"}
 				bgImage={{
 					src: "/images/home/bg.jpeg",
 					alt: "home page background",
-					className: "translate-y-[-50%]"
+					className: "translate-y-[-50%]",
 				}}
 				className="h-[42rem]"
 				renderCta={() => {
@@ -25,25 +28,27 @@ const HomePage = async () => {
 							<Button
 								size={"lg"}
 								className="text-[18px] py-7"
-								variant={"default"}
+								variant={"secondary"}
 							>
 								Boycott Israeli Products
 							</Button>
-							<Button
+							{/* <Button
 								size={"lg"}
 								className="text-[18px] py-7"
 								variant={"outline"}
 							>
 								Take Quiz
-							</Button>
+							</Button> */}
 						</div>
 					);
 				}}
 			/>
 			{/* <DonationForm /> */}
-			<section className="mt-[15vh]">
-				<BoycottProducts viewAll tabs={products} />
-			</section>
+			{products.length > 0 && (
+				<section className="mt-[15vh]">
+					<BoycottProducts viewAll tabs={products} />
+				</section>
+			)}
 
 			<section className="w-[100%] bg-[#E9EDEE] py-[5rem] px-[8%]">
 				<div className="flex flex-row items-center justify-between w-[100%]">
@@ -52,10 +57,11 @@ const HomePage = async () => {
 							About
 						</h3>
 						<p className="text-[24px] leading-10">
-							Alsadaq is a dedicated platform created with the mission of {" "}
-							<strong>supporting humanitarian efforts</strong>{" "}in Palestine and create an
-							awareness campaigns for {" "}<strong>boycotting israeli products</strong>. Our goal is
-							to provide a secure and efficient way for individuals around the
+							Alsadaq is a dedicated platform created with the mission of{" "}
+							<strong>supporting humanitarian efforts</strong> in Palestine and
+							create an awareness campaigns for{" "}
+							<strong>boycotting israeli products</strong>. Our goal is to
+							provide a secure and efficient way for individuals around the
 							world to contribute to the well-being of the Palestinian people.{" "}
 						</p>
 					</div>
@@ -70,26 +76,27 @@ const HomePage = async () => {
 				</div>
 			</section>
 			<Banner
-				title={"Test your Palestine\nKnowledge with our Quiz"}
-				variant="white"
+				title={"Support Palestine, Make an Impact"}
+				description={"Your generosity can provide crucial aid to those in need. Every donation helps to bring relief,\n hope, and a brighter future for the Palestinian people. Together, we can make a difference."}
+				variant="background"
+				note={`This setup emphasizes the importance of the donation, the impact it will have, and encourages immediate action, while clearly\ndirecting users to the "One Ummah" platform for making their contribution.`}
+				className="h-[42rem]"
 				renderCta={() => (
 					<Button
-						variant="secondary"
+						variant="default"
 						size="lg"
-						className="py-6 px-10 w-[140px]"
+						className="text-[18px] py-7 max-w-[230px]"
 					>
-						Start Quiz
+						Donate Now
 					</Button>
 				)}
-			>
-				<div className="absolute right-0 bottom-0 object-cover">
-					<Image
-						src={assets.images.quizBannerImage}
-						className="object-cover"
-						alt="bg hero flag"
-					/>
-				</div>
-			</Banner>
+				bgImage={{
+					src: '/images/home/bg-2.png',
+					alt: 'Palestine lives matter',
+					className: 'translate-y-[-4%]'
+				}}
+			/>
+
 		</>
 	);
 };

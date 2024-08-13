@@ -1,11 +1,10 @@
-'use client'
+"use client";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import assets from "@/assets";
 import Image, { ImageProps } from "next/image";
 import { Button } from "@/components/ui/button";
 import { TabItem } from "@/types/utils.type";
 import { useState } from "react";
-
 
 type BoycottProductsProps = {
 	viewAll?: boolean;
@@ -17,7 +16,7 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 	const [viewAll, setViewAll] = useState(false);
 
 	if (props.viewAll && !viewAll) {
-		tabs = tabs.slice(0, 12)
+		tabs = tabs.slice(0, 12);
 	}
 
 	return (
@@ -25,6 +24,16 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 			<h1 className="text-4xl w-[60%] font-semibold leading-[4rem] text-center text-[#333839] text-[48px] text-wrap py-3">
 				Boycott Israeli products and use these alternatives
 			</h1>
+
+			<p
+				className={
+					"text-[20px] text-center py-2 text-wrap whitespace-pre-wrap font-normal text-[#333839]"
+				}
+			>
+				{
+					"Understand the impact of your purchasing power. Here’s a list of products to avoid, ensuring that your\n money doesn’t support injustice."
+				}
+			</p>
 
 			<Tabs defaultValue={tabs[0].value} className="w-full mb-8">
 				<TabsList className="flex items-center my-5 justify-center px-2 mx-auto w-fit">
@@ -59,7 +68,12 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 																alt={`${type} icon`}
 															/>
 														</div>
-														<Image src={item.image} alt={item.name} width={100} height={1000} />
+														<Image
+															src={item.image}
+															alt={item.name}
+															width={100}
+															height={1000}
+														/>
 														<p className="text-[14px] font-semibold">
 															{item.name}
 														</p>
@@ -72,11 +86,11 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 							</div>
 							{props.viewAll && (
 								<Button
-									variant={"outline-secondary"}
+									variant={"secondary"}
 									size={"lg"}
 									className="self-center px-8 py-6"
 									onClick={() => {
-										setViewAll(true)
+										setViewAll(true);
 									}}
 								>
 									View All

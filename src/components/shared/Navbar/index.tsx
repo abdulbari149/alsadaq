@@ -38,7 +38,7 @@ const Navbar = () => {
 				))}
 			</nav>
 
-			<Button className="px-6 py-5" variant={"secondary"}>Donate Now</Button>
+			<Button className="px-6 py-5" variant={"default"}>Donate Now</Button>
 		</header>
 	);
 };
