@@ -32,7 +32,7 @@ const uploadImage = async (file: File) => {
     formData.append("files", file);
     const response = await router.private.post<UploadBoycottProductResponse>(
       "/boycott/products/upload",
-      formData
+      formData,
     );
 
     if (!response.data.success) {

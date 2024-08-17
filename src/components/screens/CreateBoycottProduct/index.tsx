@@ -2,6 +2,7 @@
 import boycottProduct from "@/api/product";
 // import ticket, { SupportTicketDocument } from "@/api/ticket";
 import { type CreateBoycottProduct, createBoycottProduct } from "@/lib/schema";
+import { supabase } from "@/lib/supabase";
 import { User } from "@prisma/client";
 import { DeleteIcon, Trash2Icon } from "lucide-react";
 import Image from "next/image";
@@ -149,28 +150,72 @@ const CreateBoycottProduct: React.FC<{ user: Omit<User, "password"> }> = ({
 			const alternateFile = imageRefs.current.alternate.files[0];
 			const boycottFile = imageRefs.current.boycott.files[0];
 
-			const [alternateImage, boycottImage] = await Promise.all([
-				boycottProduct.upload(alternateFile),
-				boycottProduct.upload(boycottFile),
+			const images = await uploadFiles([
+				{ file: alternateFile, key: "alternateImage" },
+				{ file: boycottFile, key: "boycottImage" },
 			]);
 
 			const values = transformValues(data);
 			const result = await boycottProduct.create({
 				category: values.category,
-				alternateImage: alternateImage[0].url,
+				alternateImage: images.alternateImage.url,
 				alternateName: values.alternateProductName,
-				boycottImage: boycottImage[0].url,
+				boycottImage: images.boycottImage.url,
 				boycottName: values.boycottProductName,
 			});
 			setLoading(false);
 			setData({ ...initialData });
 			clearImages();
-			router.replace("/dashboard");
 			toast.success(`Boycott Product created successfully!`);
 		} catch (error) {
 			setLoading(false);
 			toast.error((error as Error)?.message);
 		}
+	};
+
+	const uploadFiles = async (files: Array<{ file: File; key: string }>) => {
+		const images: Record<string, { url: string; size: number; name: string }> =
+			{};
+		const dir = "products";
+		for (const { file, key } of files) {
+			const fileName = `${Date.now()}.${file.name.split(".").pop()}`;
+			console.log(fileName);
+			const relativeFilePath = `${fileName}`;
+
+			try {
+				const { error } = await supabase.storage
+					.from("images")
+					.upload(relativeFilePath, file.stream(), {
+						contentType: file.type,
+						duplex: "half",
+						upsert: true,
+					});
+				if (error) {
+					console.log('Error Upload: ', error);
+					throw new Error(`Failed to upload image: ${error.message}`);
+				}
+			} catch (error) {
+				console.log('Upload Image Error:', error);
+				throw error;
+			}
+
+			try {
+				const result = supabase.storage
+					.from("images")
+					.getPublicUrl(relativeFilePath);
+
+				images[key] = {
+					url: result.data.publicUrl as string,
+					size: file.size,
+					name: file.name,
+				};
+			} catch (error) {
+				console.log('GetImage Error: ', error);
+				throw error;
+			}
+		}
+
+		return images;
 	};
 
 	console.log("data: ", data);
