@@ -1,8 +1,6 @@
 import BoycottProducts from "@/components/shared/BoycottProducts";
 import Banner from "@/components/shared/Banner";
 import { Button } from "@/components/ui/button";
-import assets from "@/assets";
-import Image from "next/image";
 import boycottProduct from "@/api/product";
 
 const HomePage = async () => {
@@ -10,11 +8,10 @@ const HomePage = async () => {
 	return (
 		<>
 			<Banner
-				title={"Your Choice Can Create Change"}
+				title="Your Choice Can Create"
+				bolded="Change"
 				variant="background"
-				description={
-					"Boycott the list of Israeli products that support oppression. Support Palestine by \ncontributing to a cause that matters. Your support is a step towards freedom."
-				}
+				description="Boycott the list of Israeli products that support oppression. Support Palestine by contributing to a cause that matters. Your support is a step towards freedom."
 				// bgImage={"/images/home/bg.jpeg"}
 				bgImage={{
 					src: "/images/home/bg.jpeg",
@@ -44,19 +41,14 @@ const HomePage = async () => {
 				}}
 			/>
 			{/* <DonationForm /> */}
-			{products.length > 0 && (
-				<section className="mt-[15vh]">
-					<BoycottProducts viewAll tabs={products} />
-				</section>
-			)}
+			{products.length > 0 && <BoycottProducts viewAll tabs={products} />}
 
 			<Banner
-				title={"Support Palestine, Make an Impact"}
-				description={
-					"Your generosity can provide crucial aid to those in need. Every donation helps to bring relief,\n hope, and a brighter future for the Palestinian people. Together, we can make a difference."
-				}
+				title="Support Palestine, Make an"
+				bolded="Impact"
+				description="Your generosity can provide crucial aid to those in need. Every donation helps to bring relief, hope, and a brighter future for the Palestinian people. Together, we can make a difference."
 				variant="background"
-				note={`This setup emphasizes the importance of the donation, the impact it will have, and encourages immediate action, while clearly\ndirecting users to the "One Ummah" platform for making their contribution.`}
+				note='This setup emphasizes the importance of the donation, the impact it will have, and encourages immediate action, while clearly directing users to the "One Ummah" platform for making their contribution.'
 				className="h-[42rem]"
 				renderCta={() => (
 					<Button

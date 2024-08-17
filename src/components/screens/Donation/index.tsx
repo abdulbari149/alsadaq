@@ -8,6 +8,7 @@ const DonationPage = () => {
 			<Banner
 				title={"Donate to Palestine\nthrough Alkhidmat\nfoundation"}
 				variant="primary"
+				bolded=""
 				renderCta={() => {
 					return (
 						<div className="flex flex-row items-center gap-4">

@@ -257,7 +257,7 @@ const DonationForm: DonationFormComponent = (props) => {
 				</form>
 			</Form>
 
-			{currentStep === 2 && <p className="px-2 text-center text-wrap text-[18px] pt-4 text-stone-500">We&apos;ll never share your information with anyone.</p>}
+			{currentStep === 2 && <p className="px-2 text-center  text-[18px] pt-4 text-stone-500">We&apos;ll never share your information with anyone.</p>}
 		</div>
 	);
 };

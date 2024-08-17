@@ -6,6 +6,7 @@ import Image from "next/image";
 
 type BannerProps = {
 	title: string | JSX.Element;
+	bolded: string;
 	renderCta?: () => React.JSX.Element;
 	variant: "primary" | "secondary" | "white" | "background";
 	children?: React.ReactNode;
@@ -19,31 +20,32 @@ const Banner = (props: BannerProps) => {
 	return (
 		<section
 			className={cn(
-				"relative flex flex-col justify-center h-[34rem] overflow-y-hidden overflow-x-hidden w-100",
+				"relative flex flex-col justify-center overflow-y-hidden overflow-x-hidden",
 				{
 					"bg-primary": props.variant === "primary",
 					"bg-[#D80027]": props.variant === "secondary",
 					"bg-white": props.variant === "white",
 					"bg-transparent px-0": props.variant === "background",
+					'bg-[#25292A] opacity-[1] z-[-1] content-[""]': props.bgImage,
 				},
 				props.className
 			)}
+			style={
+				props.bgImage
+					? {
+						backgroundImage: `url(${props.bgImage.src})`,
+						backgroundSize: "cover",
+						backgroundPosition: "center",
+						backgroundRepeat: "no-repeat",
+						backgroundAttachment: "fixed",
+					}
+					: {}
+			}
 		>
-			{props.bgImage ? (
-				<>
-					<div className="absolute top-0 left-0 bg-[#25292AE5]/90 z-[-1] w-[100%] h-[100%] block" />
-					<div className="absolute top-0 left-0 w-[100%] z-[-2]">
-						<img
-							src={props.bgImage.src}
-							className={cn(
-								"object-contain w-[100%] translate-y-[-30%]",
-								props.bgImage.className
-							)}
-							alt={props.bgImage.alt}
-						/>
-					</div>
-				</>
-			) : (
+			{props.bgImage && (
+				<div className="absolute inset-0 bg-[#25292A] opacity-75 z-[-1]" />
+			)}
+			{!props.bgImage && (
 				<div className="absolute right-0 top-0 translate-y-[-17%] object-cover">
 					<Image
 						src={assets.icons.bgHeroFlag}
@@ -55,20 +57,20 @@ const Banner = (props: BannerProps) => {
 				</div>
 			)}
 
-			<div className="flex flex-row justify-start px-[8%]">
+			<div className="flex flex-row justify-start max-w-[86rem] px-16 max-sm:px-6 w-full mx-auto">
 				<div className="flex flex-col gap-6">
 					<h1
 						className={cn(
-							"text-[64px] text-white text-wrap whitespace-pre-wrap font-semibold",
+							"text-[64px] max-md:text-4xl max-md:leading-[50px] text-white   font-normal",
 							{ "text-black": props.variant === "white" }
 						)}
 					>
-						{props.title}
+						{props.title} <span className="font-bold">{props?.bolded}</span>
 					</h1>
 					{props.description && (
 						<p
 							className={cn(
-								"text-[28px] text-white text-wrap whitespace-pre-wrap font-normal",
+								"text-[28px] text-white   max-w-[75rem] max-md:text-lg w-full font-normal",
 								{ "text-black": props.variant === "white" }
 							)}
 						>
@@ -78,11 +80,11 @@ const Banner = (props: BannerProps) => {
 					{props.renderCta?.()}
 
 					{props.note && (
-						<div className="flex flex-row items-start gap-1 my-3">
+						<div className="grid min-[400px]:grid-cols-[auto,1fr] gap-2 max-[400px]:grid-rows-[auto] items-start my-3">
 							<CircleAlertIcon color="#ffffff" size={25} className="mt-1" />
 							<p
 								className={cn(
-									"text-[18px] text-white text-wrap whitespace-pre-wrap font-normal",
+									"text-[18px] text-white font-normal max-w-[65.5rem] w-full",
 									{ "text-black": props.variant === "white" }
 								)}
 							>
@@ -90,6 +92,7 @@ const Banner = (props: BannerProps) => {
 							</p>
 						</div>
 					)}
+
 				</div>
 			</div>
 

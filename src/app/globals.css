@@ -5,7 +5,9 @@
 @layer base {
   :root {
     --background: 95 38% 33%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 192 6% 15%;
+
+  --plain-color: 187 5% 34%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -74,6 +76,15 @@
   }
 
   body {
-    /* @apply bg-background text-foreground; */
+    @apply text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
+
+  .bg-image-overlay::before {
+    @apply absolute inset-0 bg-[#25292A] opacity-75 z-[-1];
+    content: "";
+  }
