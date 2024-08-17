@@ -20,23 +20,20 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 	}
 
 	return (
-		<div className="flex flex-col items-center px-[8%] my-12">
-			<h1 className="text-4xl w-[60%] font-semibold leading-[4rem] text-center text-[#333839] text-[48px] text-wrap py-3">
-				Boycott Israeli products and use these alternatives
+		<div className="flex flex-col items-center max-w-7xl w-full mx-auto my-12">
+			<h1 className="leading-[4rem] text-center mx-auto max-w-3xl w-full text-[48px] px-5 py-3 max-md:text-[32px] max-md:leading-[38px]">
+				Choose these <b>alternatives</b> to Israeli products
 			</h1>
 
 			<p
-				className={
-					"text-[20px] text-center py-2 text-wrap whitespace-pre-wrap font-normal text-[#333839]"
-				}
+				className="text-[20px] text-center text-plain-color max-w-4xl w-full mx-auto py-2  max-md:text-lg font-normal px-6"
 			>
-				{
-					"Understand the impact of your purchasing power. Here’s a list of products to avoid, ensuring that your\n money doesn’t support injustice."
-				}
+				Understand the impact of your purchasing power. Here’s a list of products to avoid, ensuring that your money doesn’t support injustice.
+				
 			</p>
 
 			<Tabs defaultValue={tabs[0].value} className="w-full mb-8">
-				<TabsList className="flex items-center my-5 justify-center px-2 mx-auto w-fit">
+			<TabsList className="flex items-center mt-3 justify-center px-2 mx-auto w-fit">
 					{tabs.map((tab) => (
 						<TabsTrigger key={tab.id} value={tab.value}>
 							{tab.title}
@@ -44,15 +41,20 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 					))}
 				</TabsList>
 				{tabs.map((tab) => (
-					<TabsContent value={tab.value} key={tab.id} className="mt-10">
-						<div className="w-100 flex flex-col gap-8">
-							<div className="grid grid-cols-4 gap-4 grid-flow-row">
+					<TabsContent value={tab.value} key={tab.id} className="mt-6">
+						<div className="w-full flex flex-col gap-5">
+							<div className="grid grid-cols-4 gap-4 grid-flow-row
+							max-md:grid-cols-1 px-4
+							max-xl:grid-cols-2
+							xl:grid-cols-3
+							
+							">
 								{tab.products.map((p) => {
 									const { id, ...data } = p;
 									return (
 										<div
 											key={`${tab.id}-${p.id}`}
-											className="w-100 h-[160px] rounded-md bg-[#F2F5F6] flex flex-row px-3 py-3 gap-3"
+											className="w-full h-[160px] rounded-md bg-[#F2F5F6] flex flex-row px-3 py-3 gap-3"
 										>
 											{Object.keys(data).map((key) => {
 												const type = key === "boycott" ? "right" : "wrong";
@@ -84,11 +86,12 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 									);
 								})}
 							</div>
+							<div className="px-3 self-center">
 							{props.viewAll && (
 								<Button
-									variant={"secondary"}
-									size={"lg"}
-									className="self-center px-8 py-6"
+									variant="secondary"
+									size="lg"
+									className="px-8 py-6 max-md:w-full"
 									onClick={() => {
 										setViewAll(true);
 									}}
@@ -96,6 +99,7 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 									View All
 								</Button>
 							)}
+							</div>
 						</div>
 					</TabsContent>
 				))}
