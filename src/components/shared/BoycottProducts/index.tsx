@@ -57,7 +57,7 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 											className="w-full h-[160px] rounded-md bg-[#F2F5F6] flex flex-row px-3 py-3 gap-3"
 										>
 											{Object.keys(data).map((key) => {
-												const type = key === "boycott" ? "right" : "wrong";
+												const type = key === "boycott" ? "wrong" : "right";
 												const item = data[key as keyof typeof data];
 												return (
 													<div
