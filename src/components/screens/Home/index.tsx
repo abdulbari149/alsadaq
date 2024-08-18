@@ -49,7 +49,7 @@ const HomePage = async () => {
 				description="Your generosity can provide crucial aid to those in need. Every donation helps to bring relief, hope, and a brighter future for the Palestinian people. Together, we can make a difference."
 				variant="background"
 				note='This setup emphasizes the importance of the donation, the impact it will have, and encourages immediate action, while clearly directing users to the "One Ummah" platform for making their contribution.'
-				className="h-[42rem]"
+				className="py-6"
 				renderCta={() => (
 					<Button
 						variant="default"
