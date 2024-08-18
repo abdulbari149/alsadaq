@@ -10,7 +10,7 @@ export default function MainLayout({
 			{children}
 		<section className="bg-[#E9EDEE] py-[5rem]">
 				<div className="grid grid-cols-2 gap-4 items-center justify-center max-md:grid-cols-1 max-w-[86rem] px-16 max-sm:px-6 w-full mx-auto">
-					<div className="order-2 max-md:order-1 w-full h-full flex justify-center items-center">
+					<div className="order-2 max-md:order-1 w-full h-full flex justify-center max-md:justify-start items-center">
 						<Image
 							src={"/alsadaq-urdu.svg"}
 							alt="al sadaq"
@@ -37,8 +37,8 @@ export default function MainLayout({
 				</div>
 			</section>
 			<footer className="py-6 flex items-center justify-center bg-[#F2F5F6]">
-				<p className="text-[16px] text-[#51595A] font-light text-center">
-					Copyright © 2023 – 2024 Al-Sadaq. All Rights Reserved.
+				<p className="text-[14px] text-[#51595A] font-light text-center">
+					Copyright © 2024 Al-Sadaq. All Rights Reserved.
 				</p>
 			</footer>
 		</>
