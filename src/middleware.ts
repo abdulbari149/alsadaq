@@ -51,8 +51,6 @@ const middleware = async (req: CustomNextRequest) => {
   }
 
   try {
-    const accessToken = cookies().get("token");
-    if (!accessToken) throw new Error("token not found");
     const { user } = await auth.me(accessToken?.value);
 
     if (user.role === 'user') {

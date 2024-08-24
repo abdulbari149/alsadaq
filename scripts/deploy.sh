@@ -33,6 +33,9 @@ pnpm prisma:deploy
 echo "Seeding DB"
 pnpm dlx prisma db seed
 
+echo "Removing Previous build"
+rm -rf .next
+
 echo "Building Next.js Project"
 pnpm build
 
