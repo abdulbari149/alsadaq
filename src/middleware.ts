@@ -27,13 +27,13 @@ const middleware = async (req: CustomNextRequest) => {
 
   const isAuth = pathname.startsWith('/auth')
   if (isAuth) {
-    if (!accessToken) {
-      return NextResponse.next();
-    }
-
-    const url = req.nextUrl.clone();
-    url.pathname = "/dashboard";
-    return NextResponse.redirect(url);
+    // if (!accessToken) {
+    // }
+    
+    return NextResponse.next();
+    // const url = req.nextUrl.clone();
+    // url.pathname = "/dashboard";
+    // return NextResponse.redirect(url);
   }
 
   const isProtected = protectedRoutes.some((route) =>
