@@ -13,12 +13,15 @@ export default async function authorizer(...roles: Roles[]) {
 
   const [_, accessToken] = authorization.split(' ')
 
+  console.log("Access Token:: ", accessToken);
   const payload = token.access.verify<{
     id: string
     email: string
     username: string
     role: string
   }>(accessToken)
+
+  console.log("Payload:: ", payload);
 
   const user = await prisma.user.findFirst({
     where: { id: payload.id },
@@ -33,13 +36,18 @@ export default async function authorizer(...roles: Roles[]) {
     },
   })
 
+  console.log("User::", user);
+
   if (!user) {
     throw new HttpUnAuthorizedError('User not found!')
   }
 
+
   if (!roles.includes(user.role)) {
     throw new HttpUnAuthorizedError('Not allowed');
   }
+
+  console.log("Role::", user.role);
 
   return { user, payload }
 }
