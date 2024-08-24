@@ -18,6 +18,8 @@ const createMember = async (data: CreateMember) => {
   }
 };
 
-export default {
+const member = {
   create: createMember,
 }
+
+export default member;
