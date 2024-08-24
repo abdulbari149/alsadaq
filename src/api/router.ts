@@ -1,14 +1,14 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+const BaseURL = process.env.BASE_URL ?? process.env.NEXT_PUBLIC_BASE_URL
+
 const publicRouter = axios.create({
-  baseURL:
-    process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? '/api',
+  baseURL: BaseURL + '/api',
 })
 
 const privateRouter = axios.create({
-  baseURL:
-    process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? '/api',
+  baseURL: BaseURL + '/api',
 })
 
 privateRouter.interceptors.request.use(

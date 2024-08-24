@@ -11,13 +11,13 @@ const sendAccountCreationEmail = async (to: string, user: { name: string, email:
     const newMemberTemplate = fs.readFileSync("template/new-member.ejs", "utf-8");
     // Compile the template with EJS and pass in the context
     const htmlContent = ejs.render(newMemberTemplate, {
-      logoUrl: "https://www.alsadaq.com/logo.png",
+      logoUrl: `${env.BASE_URL}/logo.png`,
       userName: user.name,
       userEmail: user.email,
       userPassword: user.password,
-      loginUrl: "https://www.alsadaq.com/auth/login",
+      loginUrl: `${env.BASE_URL}/auth/login`,
       supportEmail: "support@alsadaq.com",
-      websiteUrl: "https://www.alsadaq.com",
+      websiteUrl: `${env.BASE_URL}/`
     });
 
     // Send the email
