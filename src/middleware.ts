@@ -59,7 +59,7 @@ const middleware = async (req: CustomNextRequest) => {
 
     return NextResponse.next();
   } catch (error) {
-    console.log({ error })
+    console.log(JSON.stringify({ error }, null, 2))
     if (error instanceof Error && error.message === "not-allowed") {
       return NextResponse.error();
     }
