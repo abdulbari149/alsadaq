@@ -1,10 +1,7 @@
 import { type PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { type Seeder } from "../../src/types/seeder.type";
-import admins from "../../data/admins.json" with { type: "json" };
 import { supabase } from "@/lib/supabase";
-
-
 class SuperAdminSeeder implements Seeder {
   isExecutable: boolean = true;
 
