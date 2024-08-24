@@ -12,7 +12,7 @@ const BoycottPage = async () => {
 				bolded="Better Tomorrow"
 				variant="background"
 				bgImage={{
-					src: "/images/boycott/bg.png",
+					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/boycott-bg-better-tomorrow.png",
 					alt: "Boycott Isreali Products Background",
 					className: "translate-y-[-35%] background-cover bg-center bg-no-repeat bg-fixed",
 				}}
@@ -42,7 +42,7 @@ const BoycottPage = async () => {
 					</Button>
 				)}
 				bgImage={{
-					src: "/images/home/bg-2.png",
+					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-bg-your-choice-create-change.jpeg",
 					alt: "Palestine lives matter",
 					className: "translate-y-[-4%]",
 				}}

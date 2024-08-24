@@ -12,9 +12,8 @@ const HomePage = async () => {
 				bolded="Change"
 				variant="background"
 				description="Boycott the list of Israeli products that support oppression. Support Palestine by contributing to a cause that matters. Your support is a step towards freedom."
-				// bgImage={"/images/home/bg.jpeg"}
 				bgImage={{
-					src: "/images/home/bg.jpeg",
+					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-bg-your-choice-create-change.jpeg",
 					alt: "home page background",
 					className: "translate-y-[-50%]",
 				}}
@@ -60,7 +59,7 @@ const HomePage = async () => {
 					</Button>
 				)}
 				bgImage={{
-					src: "/images/home/bg-2.png",
+					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-bg-support-palestine-make-change.png",
 					alt: "Palestine lives matter",
 					className: "translate-y-[-4%]",
 				}}

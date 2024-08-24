@@ -11,7 +11,7 @@ const sendAccountCreationEmail = async (to: string, user: { name: string, email:
     const newMemberTemplate = fs.readFileSync("template/new-member.ejs", "utf-8");
     // Compile the template with EJS and pass in the context
     const htmlContent = ejs.render(newMemberTemplate, {
-      logoUrl: `${env.BASE_URL}/logo.png`,
+      logoUrl: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/logo.png",
       userName: user.name,
       userEmail: user.email,
       userPassword: user.password,

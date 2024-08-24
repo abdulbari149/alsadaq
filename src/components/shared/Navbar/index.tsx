@@ -8,7 +8,7 @@ const Navbar = () => {
 	return (
 		<header className="flex flex-row max-w-[86rem] px-16 max-sm:px-6 w-full mx-auto justify-between bg-white border-solid border-[#E9EDEE]">
 			{/* <h2 className="text-[24px] font-[600] text-[#333839]">Al-Sadaq</h2> */}
-			<Image src="/logo.svg" className="my-5" alt="al sadaq" width={72} height={42} />
+			<Image src={"https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/logo.svg"} className="my-5" alt="al sadaq" width={72} height={42} />
 			<nav className="flex flex-row gap-8 max-md:hidden">
 				{routes.map((route) => (
 					<NavLink key={route.id} nav={route} />
