@@ -1,4 +1,3 @@
-import { HttpConflictError } from '@/errors'
 import prisma from '@/lib/prisma'
 import authorizer from '@/server/middleware/authorizer'
 import boycottProductValidator, {
@@ -6,12 +5,13 @@ import boycottProductValidator, {
 } from '@/server/validators/product.validator'
 import handleError from '@/utils/handle-error'
 import validate from '@/utils/validate'
-import { Prisma } from '@prisma/client'
+import { Prisma, Roles } from '@prisma/client'
 import { HttpStatusCode } from 'axios'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   try {
+    await authorizer(Roles.admin, Roles.member);
     const json = await request.json()
     const body = await validate<CreateBoycottProductSchema>(
       boycottProductValidator.create,

@@ -1,3 +1,4 @@
+import { userSelect } from '@/constants/select'
 import { HttpForbiddenError, HttpNotFoundError } from '@/errors'
 import prisma from '@/lib/prisma'
 import authValidator, { LoginSchema } from '@/server/validators/auth.validator'

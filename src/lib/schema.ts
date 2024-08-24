@@ -99,9 +99,17 @@ export const donationSchema = z.object({
 export type DonationSchema = z.infer<typeof donationSchema>;
 
 export const createBoycottProduct = z.object({
-  boycottProductName: z.string(),
-  alternateProductName: z.string(),
-  category: z.string(),
+  boycottProductName: z.string({ required_error: 'Boycott Product name is required' }),
+  alternateProductName: z.string({ required_error: 'Alternate Product name is required' }),
+  category: z.string({ required_error: 'Category is required' }),
 })
 
 export type CreateBoycottProduct = z.infer<typeof createBoycottProduct>
+
+
+export const createMemberSchema = z.object({
+  name: z.string({ required_error: 'name is required' }),
+  email: z.string({ required_error: 'email is required' }).email({ message: 'invalid email' }),
+})
+
+export type CreateMember = z.infer<typeof createMemberSchema>

@@ -1,9 +1,10 @@
 import { HttpUnAuthorizedError } from '@/errors'
 import prisma from '@/lib/prisma'
 import token from '@/utils/token'
+import { Roles } from '@prisma/client'
 import { cookies, headers } from 'next/headers'
 
-export default async function authorizer() {
+export default async function authorizer(...roles: Roles[]) {
   const authorization = headers().get('Authorization')
 
   if (!authorization) {
@@ -34,6 +35,10 @@ export default async function authorizer() {
 
   if (!user) {
     throw new HttpUnAuthorizedError('User not found!')
+  }
+
+  if (!roles.includes(user.role)) {
+    throw new HttpUnAuthorizedError('Not allowed');
   }
 
   return { user, payload }

@@ -60,6 +60,7 @@ const Sidebar: React.FC<{ user: Omit<User, "password" | "deletedAt"> }> = ({
 
 			<Menu>
 				{navigation
+					.filter(i => i.allowRoles.includes(user.role))
 					.sort((a, b) => a.id - b.id)
 					.map((nav) => {
 						const isActive = pathname === nav.link;
@@ -127,7 +128,9 @@ const Sidebar: React.FC<{ user: Omit<User, "password" | "deletedAt"> }> = ({
 												const message = await auth.logout();
 												router.replace("/auth/login");
 												toast.success(message);
-											} catch (error) {}
+											} catch (error) {
+												toast.error((error as Error)?.message);
+											}
 										}, 500);
 									}
 								}}

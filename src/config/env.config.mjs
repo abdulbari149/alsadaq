@@ -13,6 +13,11 @@ const env = createEnv({
     STRIPE_WEBHOOK_SECRET: z.string(),
     NEXT_PUBLIC_SUPABASE_URL: z.string(),
     NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
+    SMTP_HOST: z.string(),
+    SMTP_PORT: z.string().transform(value => Number(value)),
+    SMTP_USER: z.string(),
+    SMTP_PASS: z.string(),
+    EMAIL_FROM: z.string().email()
   },
   client: {
     NEXT_PUBLIC_API_BASE_URL: z.string(),
@@ -28,7 +33,12 @@ const env = createEnv({
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: process.env.SMTP_PORT,
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASS: process.env.SMTP_PASS,
+    EMAIL_FROM: process.env.EMAIL_FROM,
   },
 })
 

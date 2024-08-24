@@ -1,8 +1,6 @@
 import { loginSchema, signupSchema } from "@/lib/schema";
 import { z } from "zod";
 import router from "./router";
-import { AxiosError } from "axios";
-import { User } from "@prisma/client";
 import {
 	AuthLoginResponse,
 	AuthLogoutResponse,
@@ -10,6 +8,7 @@ import {
 	AuthSignupResponse,
 } from "@/types/response.type";
 import { normalizeError } from "./error";
+import Cookies from "js-cookie";
 
 const signup = async (
 	body: z.infer<typeof signupSchema> & { plan: number }
