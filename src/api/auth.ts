@@ -61,6 +61,7 @@ const me = async (accessToken: string) => {
 		}
 		return response.data.data;
 	} catch (error) {
+		console.log({ error });
 		throw normalizeError(error)
 	}
 };

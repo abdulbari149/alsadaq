@@ -6,6 +6,7 @@ import { cookies, headers } from 'next/headers'
 
 export default async function authorizer(...roles: Roles[]) {
   const authorization = headers().get('Authorization')
+  console.log("Authorization :: ", authorization);
 
   if (!authorization) {
     throw new HttpUnAuthorizedError('token not found!')
