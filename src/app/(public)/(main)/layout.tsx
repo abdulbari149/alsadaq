@@ -12,7 +12,7 @@ export default function MainLayout({
 				<div className="grid grid-cols-2 gap-4 items-center justify-center max-md:grid-cols-1 max-w-[86rem] px-16 max-sm:px-6 w-full mx-auto">
 					<div className="order-2 max-md:order-1 w-full h-full flex justify-center max-md:justify-start items-center">
 						<Image
-							src={"https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/logo.svg"}
+							src={"https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/alsadaq-urdu.svg"}
 							alt="al sadaq"
 							width={300}
 							height={120}
