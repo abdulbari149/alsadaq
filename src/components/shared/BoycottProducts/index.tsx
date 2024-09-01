@@ -71,10 +71,12 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 															/>
 														</div>
 														<Image
+															style={{ width: 80, height: 80, objectFit: 'contain' }}
 															src={item.image}
 															alt={item.name}
-															width={100}
-															height={1000}
+															width={80}
+															height={80}
+															objectFit="contain"
 														/>
 														<p className="text-[14px] font-semibold">
 															{item.name}
