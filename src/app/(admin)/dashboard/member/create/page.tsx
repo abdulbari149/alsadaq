@@ -5,8 +5,15 @@ import CreateMember from "@/components/screens/CreateMember";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: 'Al Sadaq | Create Member',
+  title: 'Create Member | Al Sadaq',
+  icons: [
+		{
+			url: "/favicon.svg",
+			rel: "icon",
+		},
+	],
 }
+
 
 const Page = async () => {
 	const { user } = await currentUser();

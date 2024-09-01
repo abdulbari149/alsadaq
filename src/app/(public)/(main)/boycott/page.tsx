@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 		{
 			url: "/favicon.svg",
 			rel: "icon",
-			sizes: "25x25",
 		},
 	],
 }
