@@ -1,10 +1,11 @@
 "use client";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import assets from "@/assets";
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { TabItem } from "@/types/utils.type";
 import { useState } from "react";
+import { ScrollBar, ScrollArea } from "@/components/ui/scroll-area";
 
 type BoycottProductsProps = {
 	viewAll?: boolean;
@@ -33,6 +34,7 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 			</p>
 
 			<Tabs defaultValue={tabs[0].value} className="w-full mb-8">
+			<ScrollArea>
 			<TabsList className="flex items-center mt-3 justify-center px-2 mx-auto w-fit">
 					{tabs.map((tab) => (
 						<TabsTrigger key={tab.id} value={tab.value}>
@@ -40,6 +42,9 @@ const BoycottProducts = (props: BoycottProductsProps) => {
 						</TabsTrigger>
 					))}
 				</TabsList>
+				<ScrollBar orientation="horizontal" />
+				</ScrollArea>
+
 				{tabs.map((tab) => (
 					<TabsContent value={tab.value} key={tab.id} className="mt-6">
 						<div className="w-full flex flex-col gap-5">
