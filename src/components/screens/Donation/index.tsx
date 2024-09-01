@@ -5,11 +5,10 @@ import { Button } from "@/components/ui/button";
 const DonationPage = () => {
 	return (
 		<div className="mb-[150px]">
-			<Banner
+			{/* <Banner
 				title={"Donate to Palestine\nthrough Alkhidmat\nfoundation"}
 				variant="primary"
-				bolded=""
-				renderCta={() => {
+				cta={() => {
 					return (
 						<div className="flex flex-row items-center gap-4">
 							<Button
@@ -29,7 +28,7 @@ const DonationPage = () => {
 						</div>
 					);
 				}}
-			/>
+			/> */}
 			<DonationForm />
 		</div>
 	);

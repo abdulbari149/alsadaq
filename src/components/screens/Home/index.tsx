@@ -1,69 +1,61 @@
 import BoycottProducts from "@/components/shared/BoycottProducts";
 import Banner from "@/components/shared/Banner";
 import { Button } from "@/components/ui/button";
-import boycottProduct from "@/api/product";
+import DonateNow from "@/components/shared/DonateNow";
+import Link from "next/link";
 
 const HomePage = async () => {
-	const products = await boycottProduct.list();
 	return (
 		<>
 			<Banner
-				title="Your Choice Can Create"
-				bolded="Change"
+				title={
+					<>
+						Your Choice Can Create <strong className="font-bold">Change</strong>
+					</>
+				}
 				variant="background"
 				description="Boycott the list of Israeli products that support oppression. Support Palestine by contributing to a cause that matters. Your support is a step towards freedom."
 				bgImage={{
-					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-bg-your-choice-create-change.jpeg",
+					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-bg-your-choice-create-change.png",
 					alt: "home page background",
-					className: "translate-y-[-50%]",
 				}}
 				className="h-[42rem]"
-				renderCta={() => {
-					return (
-						<div className="flex flex-row items-center gap-4">
-							<Button
-								size={"lg"}
-								className="text-[18px] py-7"
-								variant={"secondary"}
-							>
-								Boycott Israeli Products
-							</Button>
-							{/* <Button
-								size={"lg"}
-								className="text-[18px] py-7"
-								variant={"outline"}
-							>
-								Take Quiz
-							</Button> */}
-						</div>
-					);
-				}}
-			/>
-			{/* <DonationForm /> */}
-			{products.length > 0 && <BoycottProducts viewAll tabs={products} />}
+			>
+				<Button
+					size={"lg"}
+					className="text-[18px] py-7 max-w-[280px]"
+					variant={"secondary"}
+				>
+					<Link href={'/boycott'}>
+						Boycott Israeli Products
+					</Link>
+				</Button>
+			</Banner>
+
+			<BoycottProducts viewAll />
 
 			<Banner
-				title="Support Palestine, Make an"
-				bolded="Impact"
+				title={
+					<>
+						Support Palestine, Make an{" "}
+						<strong className="font-bold">Impact</strong>
+					</>
+				}
 				description="Your generosity can provide crucial aid to those in need. Every donation helps to bring relief, hope, and a brighter future for the Palestinian people. Together, we can make a difference."
 				variant="background"
 				note='This setup emphasizes the importance of the donation, the impact it will have, and encourages immediate action, while clearly directing users to the "One Ummah" platform for making their contribution.'
-				className="py-6"
-				renderCta={() => (
-					<Button
-						variant="default"
-						size="lg"
-						className="text-[18px] py-7 max-w-[230px]"
-					>
-						Donate Now
-					</Button>
-				)}
+				className="py-6 min-h-[42rem]" 
 				bgImage={{
-					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-bg-support-palestine-make-change.png",
+					src: "https://fspsgbvhllrfzmrvaptl.supabase.co/storage/v1/object/public/images/home-palestine-live-matter.png",
 					alt: "Palestine lives matter",
-					className: "translate-y-[-4%]",
 				}}
-			/>
+			>
+				<DonateNow
+					variant="default"
+					size="lg"
+					className="text-[18px] py-7 max-w-[230px]"
+				/>
+			</Banner>
 		</>
 	);
 };

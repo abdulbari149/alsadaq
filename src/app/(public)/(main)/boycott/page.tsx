@@ -3,7 +3,14 @@ import BoycottPage from "@/components/screens/Boycott";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Boycott Products | Al Sadaq'
+  title: 'Boycott Products | Al Sadaq',
+  icons: [
+		{
+			url: "/favicon.svg",
+			rel: "icon",
+			sizes: "25x25",
+		},
+	],
 }
 
 

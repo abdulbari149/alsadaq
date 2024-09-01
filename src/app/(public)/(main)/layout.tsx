@@ -38,7 +38,7 @@ export default function MainLayout({
 			</section>
 			<footer className="py-6 flex items-center justify-center bg-[#F2F5F6]">
 				<p className="text-[14px] text-[#51595A] font-light text-center">
-					Copyright © 2024 Al-Sadaq. All Rights Reserved.
+					Copyright © 2024 Alsadaq. All Rights Reserved.
 				</p>
 			</footer>
 		</>
