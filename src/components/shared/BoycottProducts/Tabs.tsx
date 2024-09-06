@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TabItem } from "@/types/utils.type";
 import { useState } from "react";
 import { ScrollBar, ScrollArea } from "@/components/ui/scroll-area";
+import { useRouter } from "next/navigation";
 
 type BoycottProductTabsProps = {
 	viewAll?: boolean;
@@ -14,7 +15,7 @@ type BoycottProductTabsProps = {
 const BoycottProductTabs = (props: BoycottProductTabsProps) => {
 	let { products } = props;
 	const [viewAll, setViewAll] = useState(false);
-
+	const router = useRouter()
 	let tabs = products;
 	if (props.viewAll && !viewAll) {
 		tabs = products.slice(0, 12);
@@ -57,7 +58,7 @@ const BoycottProductTabs = (props: BoycottProductTabsProps) => {
 											return (
 												<div
 													key={`${tab.id}-${p.id}-${key}`}
-													className="flex-1 relative bg-white rounded-md flex flex-col items-center justify-center gap-3"
+												className="flex-1 relative bg-white rounded-md flex flex-col items-center justify-center gap-3"
 												>
 													<div className="absolute top-1 right-1">
 														<Image
@@ -94,6 +95,7 @@ const BoycottProductTabs = (props: BoycottProductTabsProps) => {
 									className="px-8 py-6 max-md:w-full"
 									onClick={() => {
 										setViewAll(true);
+										router.push('/boycott');		
 									}}
 								>
 									View All

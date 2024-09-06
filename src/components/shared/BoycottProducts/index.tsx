@@ -1,8 +1,21 @@
 import boycottProduct from "@/api/product";
 import BoycottProductTabs from "./Tabs";
+import { redirect } from "next/navigation";
 
 const BoycottProducts = async (props: { viewAll?: boolean }) => {
-	const products = await boycottProduct.list();
+	const products = await (async () => {
+		try {
+			const data = await boycottProduct.list()
+			return { data, success: true }
+		} catch (error) {
+			return { error, success: false }
+		}
+	})();
+
+
+	if (!products.success) {
+		return redirect('/error')
+	}
 
 	return (
 		<div className="flex flex-col items-center max-w-7xl w-full mx-auto my-12">
@@ -15,8 +28,8 @@ const BoycottProducts = async (props: { viewAll?: boolean }) => {
 				products to avoid, ensuring that your money doesn’t support injustice.
 			</p>
 
-			{products && products.length > 0 ? (
-				<BoycottProductTabs products={products}  {...props} />
+			{products.data && products.data.length > 0 ? (
+				<BoycottProductTabs products={products.data}  {...props} />
 			) : null}
 		</div>
 	);
